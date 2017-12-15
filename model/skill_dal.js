@@ -65,3 +65,13 @@ exports.delete = function(skill_id, callback) {
     });
 
 };
+
+exports.getSkillsByAccountId = function(account_id, callback) {
+    var query = 'SELECT s.skill_id, s.skill_name FROM skill s ' +
+        'LEFT JOIN account_skill a_s ON s.skill_id = a_s.skill_id ' +
+        'WHERE a_s.account_id = ?;';
+    var queryData = account_id;
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};

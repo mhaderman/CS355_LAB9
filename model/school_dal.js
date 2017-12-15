@@ -69,3 +69,13 @@ exports.delete = function(school_id, callback) {
     });
 
 };
+
+exports.getSchoolsByAccountId = function (account_id, callback) {
+    var query = 'SELECT s.school_id, s.school_name FROM school s ' +
+                'LEFT JOIN account_school a_s ON s.school_id = a_s.school_id ' +
+                'WHERE a_s.account_id = ?;';
+    var queryData = account_id;
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+}

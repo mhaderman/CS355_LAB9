@@ -1,18 +1,44 @@
 <%- include("../includes/header.ejs", {title:"Resume - Add"}); %>
 
+<h1>Add a New Resume</h1>
+
 <form action="/resume/insert" method="get">
 
-    <input type="hidden" id="account_id" name="account_id" value="<%= account.account_id %>">
+    <input type="hidden" id="account_id" name="account_id" value="<%= account_id %>">
+    Resume Name: <input type="text" name="resume_name"/>
     <br/>
     <br/>
-    Skills
-    <br/>
-    <select id="skill_id" name="skill_id">
-        <% for(var i=0; skill.length > i; i++ ) { %>
-        <option value="<%= skill[i].skill_id %>"><%= skill[i].skill_name + ', ' + skill[i].description %></option>
-        <% } %>
-        <br/>
+    Select School(s): <select id="school_id" name="school_id" multiple="multiple">
+    <%for (var i = 0; schools.length > i; i++){%>
+        <option value="<%= schools[i].school_id %>"><%= schools[i].school_name %></option>
+        <%}%>
     </select>
+    <br/>
+    <br/>
+    Select Company(ies): <select id="company_id" name="company_id" multiple="multiple">
+        <%for (var i = 0; companies.length > i; i++){%>
+        <option value="<%= companies[i].company_id %>"><%= companies[i].company_name %></option>
+        <%}%>
+    </select>
+    <br/>
+    <br/>
+    Select Skill(s): <select id="skill_id" name="skill_id" multiple="multiple">
+        <%for (var i = 0; skills.length > i; i++){%>
+        <option value="<%= skills[i].skill_id %>"><%= skills[i].skill_name %></option>
+        <%}%>
+    </select>
+    <br/>
+    <br/>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#school_id').multiselect();
+            $('#company_id').multiselect();
+            $('#skill_id').multiselect();
+        });
+    </script>
+
     <input type="submit" />
 
 </form>

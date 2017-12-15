@@ -85,8 +85,6 @@ router.get('/insert', function(req, res){
                 res.send(err);
             }
             else {
-                //poor practice for redirecting the user to a different page, but we will handle it differently once we start using Ajax
-                //Q??? if this is a callback function, where does it appear as a parameter?
                 res.redirect(302, '/account/all');
             }
         });

@@ -164,3 +164,13 @@ exports.edit = function(company_id, callback) {
         callback(err, result);
     });
 };
+
+exports.getCompaniesByAccountId = function(account_id, callback) {
+    var query = 'SELECT c.company_id, c.company_name FROM company c ' +
+        'LEFT JOIN account_company a_c ON c.company_id = a_c.company_id ' +
+        'WHERE a_c.account_id = ?;';
+    var queryData = account_id;
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};

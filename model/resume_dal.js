@@ -30,3 +30,11 @@ exports.getInfoForAdd = function(account_id, callback) {
         callback(err, result);
     });
 };
+
+exports.insert = function(params, callback) {
+    var query = 'INSERT INTO resume (account_id, resume_name) VALUES (?)';
+    var queryData = [params.account_id, params.resume_name];
+    connection.query(query, [queryData], function(err, result) {
+        callback(err, result);
+    });
+};
