@@ -1,0 +1,15 @@
+<%- include("../includes/header.ejs", {title:"Skill - " + result[0].skill_name}); %>
+<h1>Skills</h1>
+<ul>
+    <li>Skill:
+        <ul>
+            <% for(var i=0; result.length > i; i++ ) { %>
+            <li><%= result[i].skill_name + ' : ' + result[i].description %></li>
+            <% } %>
+        </ul>
+    </li>
+</ul>
+
+<a href="/skill/all"><< back</a>
+
+<%- include("../includes/footer.ejs"); %>

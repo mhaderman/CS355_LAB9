@@ -1,0 +1,24 @@
+Skills:
+
+    <br />
+    <select id="skill_id" name="skill_id" multiple="multiple">
+        <% for(var i=0; account.length > i; i++ ) {
+            var selected = "";
+
+            if(account[0][i].account_id != null) {
+                selected = "selected";
+            }
+        %>
+        <option value="<%= account[0][i].skill_id %>" <%= selected %> ><%= account[0][i].skill_name + ', ' + account[0][i].description %></option>
+        <% } %>
+    </select>
+
+    <!-- Initialize the multiselect plugin: -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#skill_id').multiselect();
+        });
+    </script>
+
+    <br />

@@ -1,0 +1,13 @@
+<%- include("../includes/header.ejs", {title:"Add New Address"}); %>
+<h1>Add New Address</h1>
+<form action="/address/insert" method="get">
+    Street Address: <input id="street" name="street" type="text" value="<%= address.street%>"/>
+    <br />
+    <br />
+    Zip Code: <input id="zip_code" name="zip_code" type="text" value="<%= address.zip_code%>"/>
+    <br />
+    <br />
+    <input type="submit" />
+
+</form>
+<%- include("../includes/footer.ejs"); %>

@@ -1,0 +1,44 @@
+<%- include("../includes/header.ejs", {title:"Companies - " + result[0].company_name}); %>
+    <h1>Account</h1>
+    <ul>
+        <li>First Name: <%= result[0][0].first_name %></li>
+        <li>Last Name: <%= result[0][0].last_name %></li>
+        <li>Email: <%= result[0][0].email %></li>
+        <br/>
+        Skills
+        <select id="skill_id" name="skill_id" multiple="multiple">
+            <% for(var i=0; result[0].length > i; i++ ) { %>
+            <option value="<%= result[0][i].skill_id %>"><%= result[0][i].skill_name + ', ' + result[0][i].description %></option>
+            <% } %>
+        </select>
+        <br />
+        <br />
+        Schools
+        <select id="school_id" name="school_id" multiple="multiple">
+            <% for(var i=0; result[1].length > i; i++ ) { %>
+            <option value="<%= result[1][i].school_id %>"><%= result[1][i].school_name  %></option>
+            <% } %>
+        </select>
+        <br />
+        <br />
+        Companies
+        <select id="company_id" name="company_id" multiple="multiple">
+            <% for(var i=0; result[2].length > i; i++ ) { %>
+            <option value="<%= result[2][i].company_id %>"><%= result[2][i].company_name  %></option>
+            <% } %>
+        </select>
+
+    </ul>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#skill_id').multiselect();
+        $('#school_id').multiselect();
+        $('#company_id').multiselect();
+    });
+</script>
+
+
+<a href="/account/all"><< back</a>
+
+<%- include("../includes/footer.ejs"); %>

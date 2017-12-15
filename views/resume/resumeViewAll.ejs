@@ -1,0 +1,47 @@
+<%- include("../includes/header.ejs", {title:"Resumes - View All"}); %>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1>All Resumes</h1>
+<br />
+<a href="/resume/add/selectuser">Add New Resume</a>
+<br />
+<br />
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Resume Name</th>
+    </tr>
+    <% for(var i=0; result.length > i; i++ ) { %>
+    <tr>
+        <td><%= result[i].first_name %></td>
+        <td><%= result[i].last_name %></td>
+        <td><%= result[i].resume_name %></td>
+    </tr>
+    <% } %>
+
+</table>
+
+</body>
+
+<%- include("../includes/footer.ejs"); %>
